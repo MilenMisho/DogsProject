@@ -23,18 +23,18 @@ namespace DogApp.Areas.Identity.Pages.Account
         private readonly SignInManager<DogUser> _signInManager;
         private readonly UserManager<DogUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        //private readonly IEmailSender _emailSender;
+       // private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<DogUser> userManager,
             SignInManager<DogUser> signInManager,
             ILogger<RegisterModel> logger)
-            //IEmailSender emailSender)
+           // ,IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            //_emailSender = emailSender;
+           // _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -49,7 +49,6 @@ namespace DogApp.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Username")]
             public string Username { get; set; }
-
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -69,7 +68,6 @@ namespace DogApp.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
-
             [Required]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
@@ -85,10 +83,13 @@ namespace DogApp.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+           
+            
             if (ModelState.IsValid)
             {
+                //var user = new DogUser { UserName = Input.Email, Email = Input.Email };
                 var user = new DogUser
-                { 
+                {
                     UserName = Input.Username,
                     Email = Input.Email,
                     FirstName = Input.FirstName,

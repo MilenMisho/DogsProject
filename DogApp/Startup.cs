@@ -35,11 +35,18 @@ namespace DogApp
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddIdentity<DogUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDefaultIdentity<DogUser>()//(options => options.SignIn.RequireConfirmedAccount = false)
+             .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders();
+              .AddDefaultTokenProviders();
+
             services.AddControllersWithViews();
+
             services.AddTransient<IDogService, DogService>();
+
 
             services.AddRazorPages();
             services.Configure<IdentityOptions>(option =>
