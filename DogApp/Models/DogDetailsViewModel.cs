@@ -12,5 +12,6 @@ namespace DogApp.Models
         public int Age { get; set; }
         public string Breed { get; set; }
         public string Picture { get; set; }
+        public string FullName { get; set; }
     }
 }

@@ -25,5 +25,7 @@ namespace DogApp.Domain
         public string Breed { get; set; }
 
         public string Picture { get; set; }
+        public string OwnerId { get; set; }
+        public virtual DogUser Owner { get; set; }
     }
 }

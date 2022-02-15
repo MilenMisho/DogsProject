@@ -16,7 +16,7 @@ namespace DogApp.Services
         {
             _context = context;
         }
-        public bool Create(string name, int age, string breed, string picture)
+        public bool Create(string name, int age, string breed, string picture, string userId)
         {
             Dog item = new Dog
             {
@@ -24,6 +24,7 @@ namespace DogApp.Services
                 Age = age,
                 Breed = breed,
                 Picture = picture,
+                OwnerId = userId,
             };
 
             _context.Dogs.Add(item);
